@@ -48,7 +48,7 @@ const AppointmentSection = () => {
                 </h3>
                 <div className="hb-description mb-6">
                   <p className="text-gray-600">
-                    Experience the ultimate relaxation with our expert **Couple Massage, Thai Massage,** and **Aromatherapy Oil Massage.** Whether you need deep tissue relief or a calming spa session, we have the perfect treatment for you.
+                    Experience the ultimate relaxation with our expert <span className="font-bold">Couple Massage,</span> <span className="font-bold">Thai Massage,</span> and <span className="font-bold">Aromatherapy Oil Massage.</span> Whether you need deep tissue relief or a calming spa session, we have the perfect treatment for you.
                   </p>
                   <p className="text-gray-600 mt-4">
                     Call us:{" "}

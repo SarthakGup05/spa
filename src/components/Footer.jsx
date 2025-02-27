@@ -18,8 +18,11 @@ const Footer = () => {
           <h3 className="text-lg font-semibold text-pink-600">Contact Us</h3>
           <div className="flex items-center justify-center md:justify-start space-x-2 text-gray-700">
             <Phone size={18} />
-            <span>063922 40402</span>
+            <a href="tel:+916392240402" className="hover:text-pink-600 transition duration-300">
+              063922 40402
+            </a>
           </div>
+          {/* Uncomment to enable email */}
           {/* <div className="flex items-center justify-center md:justify-start space-x-2 text-gray-700">
             <Mail size={18} />
             <span>info@massagespa.com</span>
