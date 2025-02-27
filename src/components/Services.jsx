@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Modal from "../utils/modal";
-import BookingForm from "../utils/Bookingform";
 
 const ServicesSection = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const toggleModal = () => {
-    setIsModalOpen((prev) => !prev);
-  };
-
   const services = [
     {
       id: 1,
@@ -22,7 +14,7 @@ const ServicesSection = () => {
       id: 2,
       title: "Jacuzzi Baths",
       description:
-        "jacuzzi baths are a great way to relax and unwind after a long day",
+        "Jacuzzi baths are a great way to relax and unwind after a long day",
       image: "/services/jacuzi.jpg",
     },
     {
@@ -41,22 +33,22 @@ const ServicesSection = () => {
     },
   ];
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  // WhatsApp Redirect Function
+  const handleWhatsAppRedirect = (serviceTitle) => {
+    const phoneNumber = "6392240402"; 
+    const message = encodeURIComponent(`I'm interested in ${serviceTitle}. Can you provide more details?`);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappUrl, "_blank");
+  };
 
   return (
-    <section
-      className="py-16 bg-gradient-to-t from-pink-200 to-white"
-      id="services"
-    >
+    <section className="py-16 bg-gradient-to-t from-pink-200 to-white" id="services">
       <div className="container mx-auto px-4">
         <div className="flex justify-center mb-12">
           <div className="text-center max-w-2xl">
             <h2 className="text-4xl font-bold text-gray-800">
-              <span className="block text-lg text-gray-500 mb-1">
-                Welcome to
-              </span>
-              our services
+              <span className="block text-lg text-gray-500 mb-1">Welcome to</span>
+              Our Services
             </h2>
           </div>
         </div>
@@ -86,7 +78,7 @@ const ServicesSection = () => {
                 </p>
 
                 <motion.button
-                  onClick={openModal}
+                  onClick={() => handleWhatsAppRedirect(service.title)}
                   className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-pink-400 to-pink-200 text-white font-medium transition-all duration-300 shadow-md group-hover:from-white group-hover:to-gray-200 group-hover:text-pink-600"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -98,13 +90,6 @@ const ServicesSection = () => {
           ))}
         </div>
       </div>
-
-      {/* Modal with Booking Form */}
-      {isModalOpen && (
-        <Modal onClose={toggleModal}>
-          <BookingForm />
-        </Modal>
-      )}
     </section>
   );
 };

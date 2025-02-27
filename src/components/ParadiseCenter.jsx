@@ -14,19 +14,14 @@ const ParadiseCenter = () => {
   const [activeFeature, setActiveFeature] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [stats, setStats] = useState({ years: 0, clients: 0, treatments: 0 });
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // Function to handle modal open/close
-  const toggleModal = () => {
-    setIsModalOpen((prev) => !prev);
-  };
 
-  // Animation on component mount
+  const toggleModal = () => setIsModalOpen((prev) => !prev);
+
   useEffect(() => {
     setIsVisible(true);
 
-    // Animate stats counting up
-    const duration = 2000; // 2 seconds for the animation
+    const duration = 2000;
     const intervalTime = 20;
     const steps = duration / intervalTime;
 
@@ -54,7 +49,7 @@ const ParadiseCenter = () => {
       title: "Best Couple Massage Experience",
       description:
         "Enjoy a rejuvenating couple massage with your partner in a serene and romantic ambiance.",
-      color: "pink",
+      bgColor: "bg-pink-50",
     },
     {
       id: 2,
@@ -62,7 +57,7 @@ const ParadiseCenter = () => {
       title: "Authentic Thai Massage Therapy",
       description:
         "Experience deep relaxation with expert Thai massage techniques that relieve tension and restore balance.",
-      color: "blue",
+      bgColor: "bg-blue-50",
     },
     {
       id: 3,
@@ -70,30 +65,21 @@ const ParadiseCenter = () => {
       title: "Aromatherapy Oil Massage",
       description:
         "Indulge in a soothing oil massage infused with essential oils for a calming, stress-free escape.",
-      color: "green",
+      bgColor: "bg-green-50",
     },
   ];
-  
 
-  const handleFeatureHover = (id) => {
-    setActiveFeature(id);
-  };
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
   return (
-    <section
-      className="bg-pink-50 py-12 overflow-hidden"
-      id="hb-paradisecenter"
-    >
-      <div className="container mx-auto px-6 md:px-12">
+    <section className="bg-pink-50 py-12 overflow-hidden" id="hb-paradisecenter">
+      <div className="container mx-auto px-4 md:px-12">
         <div
           className={`mb-12 text-center max-w-3xl mx-auto transform transition-all duration-1000 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4 pt-8">
-            Welcome to <span className="text-pink-500">D Thai Spa</span>
-          </h2>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4 pt-8">
+            Welcome to <span className="text-pink-500">DThai Spa</span>
+          </h1>
           <p className="text-xl text-gray-600">
             Indulge yourself in a world of beauty and relaxation where you'll
             emerge feeling like a goddess.
@@ -103,9 +89,7 @@ const ParadiseCenter = () => {
         <div className="flex flex-wrap items-center justify-between">
           <div
             className={`w-full lg:w-1/2 p-4 mb-8 lg:mb-0 transform transition-all duration-1000 ${
-              isVisible
-                ? "translate-x-0 opacity-100"
-                : "-translate-x-10 opacity-0"
+              isVisible ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
             }`}
           >
             <div className="relative group">
@@ -116,96 +100,69 @@ const ParadiseCenter = () => {
                 className="relative z-10 rounded-lg shadow-xl w-full h-auto object-cover transition-all duration-500 group-hover:shadow-2xl"
               />
 
-              {/* Floating Stats Cards */}
               <div className="absolute -bottom-4 -right-4 bg-white p-4 rounded-lg shadow-lg z-20 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <p className="text-pink-500 font-bold text-lg">
-                  {stats.years}+ Years
-                </p>
+                <p className="text-pink-500 font-bold text-lg">{stats.years}+ Years</p>
                 <p className="text-gray-600 text-sm">of Excellence</p>
-              </div>
-
-              {/* <div className="absolute top-4 -left-4 bg-white p-3 rounded-lg shadow-lg z-20 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                <div className="flex items-center">
-                  <Clock className="text-pink-400 mr-2" size={16} />
-                  <p className="text-gray-800 font-medium">{stats.treatments}+ Treatments</p>
-                </div>
-              </div> */}
-
-              <div className="absolute top-1/3 -right-6 bg-white p-3 rounded-lg shadow-lg z-20 transition-all duration-300 hover:shadow-xl hover:-translate-x-1">
-                {/* <div className="flex items-center">
-                  <Award className="text-pink-400 mr-2" size={16} />
-                  <p className="text-gray-800 font-medium">{stats.clients.toLocaleString()}+ Happy Clients</p>
-                </div> */}
               </div>
             </div>
           </div>
 
           <div
             className={`w-full lg:w-1/2 p-4 transform transition-all duration-1000 ${
-              isVisible
-                ? "translate-x-0 opacity-100"
-                : "translate-x-10 opacity-0"
+              isVisible ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
             }`}
           >
             <h3 className="text-2xl font-semibold text-gray-800 mb-6">
               Why Choose Our Spa?
             </h3>
-            <div className="space-y-6">
+            <div className="space-y-4">
               {features.map((feature) => (
                 <div
                   key={feature.id}
-                  className={`flex p-6 bg-white shadow-lg rounded-xl transition-all duration-300 transform ${
-                    activeFeature === feature.id
-                      ? `scale-105 shadow-xl bg-${feature.color}-50`
-                      : "hover:shadow-xl hover:-translate-y-1"
+                  className={`flex p-4 sm:p-2 bg-white shadow-lg rounded-xl transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1 ${
+                    activeFeature === feature.id ? feature.bgColor : ""
                   }`}
-                  onMouseEnter={() => handleFeatureHover(feature.id)}
-                  onMouseLeave={() => handleFeatureHover(null)}
+                  onMouseEnter={() => setActiveFeature(feature.id)}
+                  onMouseLeave={() => setActiveFeature(null)}
                 >
                   <div className="shrink-0">
-                    <div
-                      className={`p-3 bg-${
-                        feature.color
-                      }-100 rounded-full transition-all duration-300 ${
-                        activeFeature === feature.id ? `scale-110` : ""
-                      }`}
-                    >
+                    <div className="p-3 bg-gray-100 rounded-full transition-all duration-300">
                       {feature.icon}
                     </div>
                   </div>
                   <div className="ml-6 flex-1">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    <h3 className="text-lg sm:text-base font-semibold text-gray-900 mb-2">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600">{feature.description}</p>
-                  </div>
-                  <div
-                    className={`flex items-center transition-opacity duration-300 ${
-                      activeFeature === feature.id ? "opacity-100" : "opacity-0"
-                    }`}
-                  >
-                    <ChevronRight className={`text-${feature.color}-500`} />
+                    <p className="text-gray-600 text-sm">{feature.description}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="mt-8">
-              <button onClick={openModal} className="group relative bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <span className="relative z-10 flex items-center justify-center">
-                  Book Your Session
-                  <ChevronRight
-                    className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
-                    size={18}
-                  />
-                </span>
-                <span className="absolute bottom-0 left-0 w-full h-0 bg-pink-600 transition-all duration-300 group-hover:h-full"></span>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <button
+                onClick={toggleModal}
+                className="group relative bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex items-center"
+              >
+                <span className="relative z-10">Book Your Session</span>
+                <ChevronRight className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300" size={18} />
               </button>
+
+              <a
+                href="https://wa.me/6392240402"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              >
+                WhatsApp
+                <ChevronRight className="ml-2" size={18} />
+              </a>
             </div>
           </div>
         </div>
       </div>
-      {/* Modal with Booking Form */}
+
       {isModalOpen && (
         <Modal onClose={toggleModal}>
           <BookingForm />
