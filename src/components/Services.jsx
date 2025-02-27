@@ -77,14 +77,25 @@ const ServicesSection = () => {
                   {service.description}
                 </p>
 
-                <motion.button
-                  onClick={() => handleWhatsAppRedirect(service.title)}
-                  className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-pink-400 to-pink-200 text-white font-medium transition-all duration-300 shadow-md group-hover:from-white group-hover:to-gray-200 group-hover:text-pink-600"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Book Now
-                </motion.button>
+                <div className="flex gap-2">
+                  <motion.button
+                    onClick={() => handleWhatsAppRedirect(service.title)}
+                    className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-pink-400 to-pink-200 text-white font-medium transition-all duration-300 shadow-md group-hover:from-white group-hover:to-gray-200 group-hover:text-pink-600"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Book Now
+                  </motion.button>
+
+                  <motion.a
+                    href="tel:+6392240402"
+                    className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-blue-400 to-blue-200 text-white font-medium transition-all duration-300 shadow-md group-hover:from-white group-hover:to-gray-200 group-hover:text-blue-600"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Call
+                  </motion.a>
+                </div>
               </div>
             </div>
           ))}
