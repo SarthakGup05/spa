@@ -62,7 +62,7 @@ const MassageTable = () => {
   
   // Redirect to WhatsApp with appropriate message
   const handleCallNow = () => {
-    window.location.href = `tel:+${phoneNumber}`;
+    window.location.href = `tel:${phoneNumber}`;
   };
 
   return (
