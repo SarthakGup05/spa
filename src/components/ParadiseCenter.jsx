@@ -160,7 +160,7 @@ const ParadiseCenter = () => {
               </a>
 
               <a
-                href="tel:+6392240402"
+                href="tel:6392240402"
                 className="flex items-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
               >
                 Call Now
